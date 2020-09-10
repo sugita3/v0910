@@ -51,7 +51,28 @@ namespace v0910
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            for (int i = 0; i < 3; i++)
+            {
 
+
+                vx[i] = rand.Next(-15, 16);
+                vy[i] = rand.Next(-15, 16);
+
+
+
+
+                labels[i] = new Label();
+                labels[i].AutoSize = true;
+                labels[i].Text = "★";
+                labels[i].Left = rand.Next(ClientSize.Width - labels[i].Width);
+                labels[i].Top = rand.Next(ClientSize.Height - labels[i].Height);
+
+                Controls.Add(labels[i]);
+
+                labels[0].Left +=  vx;
+                labels[0].Top += vy;
+            }
+           
            
 
         }
