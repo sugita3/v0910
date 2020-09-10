@@ -13,18 +13,18 @@ namespace v0910
     public partial class Form1 : Form
     {
         private static Random rand = new Random();
-       
-        
-        int[] vx = new int[3];
-        int[] vy = new int[3];
-        Label[] labels = new Label[3];
+
+        const int ChrMax = 10;
+        int[] vx = new int[ChrMax];
+        int[] vy = new int[ChrMax];
+        Label[] labels = new Label[ChrMax];
 
         public Form1()
         {
             InitializeComponent();
 
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < ChrMax; i++)
             {
                
 
@@ -51,7 +51,7 @@ namespace v0910
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            for(int i=0;i<3;i++)
+            for (int i = 0; i < ChrMax; i++)
             {
                 labels[i].Left += vx[i];
                 labels[i].Top += vy[i];
@@ -60,21 +60,39 @@ namespace v0910
                 {
                     vx[i] = Math.Abs(vx[i]);
                 }
-                if (labels[i].Left < 0)
+                if (labels[i].Top < 0)
                 {
                     vy[i] = Math.Abs(vy[i]);
                 }
-                    if (labels[i].Right > ClientSize.Width)
+                if (labels[i].Right > ClientSize.Width )
                 {
-                    vx[i] = Math.Abs(vx[i]);
+                    vx[i] = -Math.Abs(vx[i]);
                 }
-                     if(labels[i].Bottom > ClientSize.Height)
+                    if (labels[i].Bottom > ClientSize.Height)
                 {
-                    vx[i] = Math.Abs(vx[i]);
+                    vy[i] = -Math.Abs(vy[i]);
                 }
             }
            
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for(int i=0;i<10;i++)
+            {
+
+                if(i == 2)
+                {
+                    continue;
+                }
+                MessageBox.Show("i==2の後");
+                if(i == 5)
+                {
+                    break;
+                }
+                MessageBox.Show("" + i);
+            }
         }
     }
 }
